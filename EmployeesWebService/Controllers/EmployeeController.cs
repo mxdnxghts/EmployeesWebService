@@ -74,8 +74,8 @@ public class EmployeeController : ControllerBase
         using var connection = new NpgsqlConnection(_appConfigOptions.ConnectionString);
         var sql = """
             INSERT INTO employees (name, surname, phone, company_id, department_id, passport_id)
-            VALUES (@EmployeeName, @EmployeeSurname, @EmployeePhone, @CompanyId, @DepartmentId, @PassportId);
-            SELECT id FROM employees WHERE name = @EmployeeName;
+            VALUES (@EmployeeName, @EmployeeSurname, @EmployeePhone, @CompanyId, @DepartmentId, @PassportId)
+            RETURNING id;
             """;
 
         var result = (await connection.QueryAsync<int>(sql, new
