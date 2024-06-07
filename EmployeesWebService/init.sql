@@ -1,7 +1,3 @@
-DROP TABLE employees;
-DROP TABLE departments;
-DROP TABLE passports;
-
 CREATE TABLE departments(
 	id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 	name TEXT,
